@@ -18,7 +18,7 @@ class _NavigationState extends State<Navigation> {
   final List<Widget> _pages = [
     HomeScreen(),
     Container(), // Placeholder pour le FloatingActionButton
-    LoginScreen(),
+    const LoginScreen(),
   ];
 
   void _onItemTapped(int index) {

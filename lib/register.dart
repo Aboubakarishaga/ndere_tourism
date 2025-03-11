@@ -35,20 +35,38 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Center(child: Text("Inscription", style: TextStyle(color: Colors.white, fontStyle: FontStyle.italic, fontSize: 45, fontWeight: FontWeight.bold),)),
-          backgroundColor: Colors.blue),
+          title: const Center(
+            child: Text(
+              "Inscription",
+              style: TextStyle(
+                color: Colors.white,
+                fontStyle: FontStyle.italic,
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          backgroundColor: Colors.blueAccent,),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Center(child: Text("S'incrire", style: TextStyle(color: Colors.deepPurple, fontSize: 50.0, fontStyle: FontStyle.italic),)),
+            const Center(
+                child: Text(
+              "S'incrire",
+              style: TextStyle(
+                  color: Colors.blueAccent,
+                  fontSize: 50.0,
+                  fontStyle: FontStyle.italic),
+            )),
             TextField(
               controller: _nameController,
               decoration: const InputDecoration(
                 labelText: "Nom",
+                labelStyle: TextStyle(color: Colors.blueAccent),
                 border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.person),
+                prefixIcon: Icon(Icons.person, color: Colors.blueAccent,),
               ),
             ),
             const SizedBox(height: 15),
@@ -57,8 +75,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
               keyboardType: TextInputType.emailAddress,
               decoration: const InputDecoration(
                 labelText: "Email",
+                labelStyle: TextStyle(color: Colors.blueAccent),
                 border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.email),
+                prefixIcon: Icon(Icons.email, color: Colors.blueAccent,),
               ),
             ),
             const SizedBox(height: 15),
@@ -69,8 +88,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 labelText: _selectedDate == null
                     ? "Date de naissance"
                     : "${_selectedDate!.day}/${_selectedDate!.month}/${_selectedDate!.year}",
+                labelStyle: const TextStyle(color: Colors.blueAccent),
                 border: const OutlineInputBorder(),
-                prefixIcon: const Icon(Icons.calendar_today),
+                prefixIcon: const Icon(Icons.calendar_today, color: Colors.blueAccent,),
               ),
             ),
             const SizedBox(height: 15),
@@ -79,8 +99,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
               obscureText: true,
               decoration: const InputDecoration(
                 labelText: "Mot de passe",
+                labelStyle: TextStyle(color: Colors.blueAccent),
                 border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.lock),
+                prefixIcon: Icon(Icons.lock, color: Colors.blueAccent,),
               ),
             ),
             const SizedBox(height: 15),
@@ -89,8 +110,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
               obscureText: true,
               decoration: const InputDecoration(
                 labelText: "Confirmer le mot de passe",
+                labelStyle: TextStyle(color: Colors.blueAccent),
                 border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.lock),
+                prefixIcon: Icon(Icons.lock, color: Colors.blueAccent,),
               ),
             ),
             const SizedBox(height: 20),
@@ -99,9 +121,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 // Action pour l'inscription
               },
               style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blueAccent,elevation: 20.0,
                 minimumSize: const Size(double.infinity, 50),
               ),
-              child: const Text("S'inscrire"),
+              child: const Text("S'inscrire", style: TextStyle(color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.bold),),
             ),
             const SizedBox(height: 10),
             GestureDetector(
@@ -112,7 +135,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               child: const Text(
                 " Déjà Inscrit ? Se connecter",
                 style:
-                    TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+                    TextStyle(color: Colors.blueAccent, fontWeight: FontWeight.bold),
               ),
             ),
           ],

@@ -112,11 +112,11 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
           style: TextStyle(
             color: Colors.white,
             fontStyle: FontStyle.italic,
-            fontSize: 45,
+            fontSize: 30,
             fontWeight: FontWeight.bold,
           ),
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.blueAccent,
       ),
       body: favoriteSites.isEmpty
           ? const Center(child: Text("Aucun site ajouté en favori"))
@@ -145,12 +145,12 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                     children: [
                       Text(
                         favoriteSites[index]["sitename"]!,
-                        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      style: const TextStyle(color: Colors.blueAccent, fontSize: 18.0, fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(height: 5),
                       Text(
                         favoriteSites[index]["description"]!,
-                        style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+                        style: const TextStyle(color: Colors.blueAccent, fontStyle: FontStyle.italic),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),

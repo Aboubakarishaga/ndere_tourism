@@ -7,36 +7,31 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(elevation: 10.0,
-        centerTitle: true,
-        leading:
-        Padding(
-          padding: const EdgeInsets.fromLTRB(10.0, 0, 0, 5),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: Image.asset(
-              "assets/montndere.jpg",
-              width: 100,
-              height: 100,
-              fit: BoxFit.cover,
+      appBar: AppBar(
+          title: const Center(
+            child: Text(
+              "Se Connecter",
+              style: TextStyle(
+                color: Colors.white,
+                fontStyle: FontStyle.italic,
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
-        ),
-
-        title: const Center(child: Text("Connexion", style: TextStyle(color: Colors.white, fontStyle: FontStyle.italic, fontSize: 45, fontWeight: FontWeight.bold),)),
-        backgroundColor: Colors.blue,
-      ),
+          backgroundColor: Colors.blueAccent),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Center(child: Text("Se Connecter", style: TextStyle(color: Colors.deepPurple, fontSize: 50.0, fontStyle: FontStyle.italic),)),
+            const Center(child: Text("Se Connecter",  style: const TextStyle(color: Colors.blueAccent, fontSize: 18.0, fontWeight: FontWeight.bold),)),
             const TextField(
               decoration: InputDecoration(
                 labelText: "Email",
+                labelStyle: TextStyle(color: Colors.blueAccent),
                 border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.person),
+                prefixIcon: Icon(Icons.person, color: Colors.blueAccent,),
               ),
             ),
             const SizedBox(height: 15),
@@ -44,8 +39,9 @@ class LoginScreen extends StatelessWidget {
               obscureText: true,
               decoration: InputDecoration(
                 labelText: "Mot de passe",
+                labelStyle: TextStyle(color: Colors.blueAccent),
                 border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.lock),
+                prefixIcon: Icon(Icons.lock, color: Colors.blueAccent,),
               ),
             ),
             const SizedBox(height: 20),
@@ -54,9 +50,10 @@ class LoginScreen extends StatelessWidget {
                 // Action de connexion
               },
               style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blueAccent,elevation: 20.0,
                 minimumSize: const Size(double.infinity, 50),
               ),
-              child: const Text("Se connecter"),
+              child: const Text("Se connecter", style: const TextStyle(color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.bold),),
             ),
             const SizedBox(height: 15),
             Row(
@@ -69,9 +66,7 @@ class LoginScreen extends StatelessWidget {
                   },
                   child: const Text(
                     "Mot de passe oublié ?         ",
-                    style: TextStyle(
-                        color: Colors.blue,
-                        decoration: TextDecoration.underline),
+                      style: const TextStyle(color: Colors.blueAccent, fontStyle: FontStyle.italic),
                   ),
                 ),
                 const SizedBox(height: 10),
@@ -83,7 +78,7 @@ class LoginScreen extends StatelessWidget {
                   child: const Text(
                     " Créer un compte",
                     style: TextStyle(
-                        color: Colors.blue, fontWeight: FontWeight.bold),
+                        color: Colors.blueAccent, fontWeight: FontWeight.bold),
                   ),
                 ),
               ],

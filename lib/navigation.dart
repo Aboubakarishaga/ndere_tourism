@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:ndere_tourism/favorite.dart';
 import 'package:ndere_tourism/homepage.dart';
 
 import 'loginscreen.dart';
@@ -17,14 +18,24 @@ class _NavigationState extends State<Navigation> {
   int _selectedIndex = 0;
   final List<Widget> _pages = [
     const HomeScreen(),
-    Container(), // Placeholder pour le FloatingActionButton
+    const FavoritesScreen(),
     const LoginScreen(),
   ];
 
   void _onItemTapped(int index) {
-    if (index != 1) {
+    if (index == 0) {
       setState(() {
-        _selectedIndex = index;
+        _selectedIndex = 0;
+      });
+    } else
+    if (index == 1) {
+      setState(() {
+        _selectedIndex = 1;
+      });
+    } else
+    if (index == 2) {
+      setState(() {
+        _selectedIndex = 2;
       });
     }
   }
@@ -33,47 +44,22 @@ class _NavigationState extends State<Navigation> {
   List<LatLng> routePoints = [];
   Position? userPosition;
 
-  void _getCurrentLocation() async {
-    bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) return;
-
-    LocationPermission permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.deniedForever) return;
-    }
-
-    Position position = await Geolocator.getCurrentPosition();
-    setState(() {
-      userPosition = position;
-      markers.add(
-        Marker(
-          point: LatLng(position.latitude, position.longitude),
-          child: const Icon(Icons.my_location, color: Colors.blue, size: 40),
-        ),
-      );
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
+        elevation: 10.0,
+        backgroundColor: Colors.blue,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.deepPurple,
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
-        items: [
-          const BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(
-              icon: GestureDetector(
-                onTap: () {
-                  _getCurrentLocation;
-                },
-                child: const Icon(Icons.add, size: 40),
-              ),
-              label: ""),
-          const BottomNavigationBarItem(
-              icon: Icon(Icons.person), label: "Profil"),
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home,), label: "Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "Favoris"),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profil")
         ],
       ),
     );

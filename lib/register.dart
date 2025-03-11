@@ -35,13 +35,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Center(child: Text("Inscription")),
+          title: const Center(child: Text("Inscription", style: TextStyle(color: Colors.white, fontStyle: FontStyle.italic, fontSize: 45, fontWeight: FontWeight.bold),)),
           backgroundColor: Colors.blue),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const Center(child: Text("S'incrire", style: TextStyle(color: Colors.deepPurple, fontSize: 50.0, fontStyle: FontStyle.italic),)),
             TextField(
               controller: _nameController,
               decoration: const InputDecoration(

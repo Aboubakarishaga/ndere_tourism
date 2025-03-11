@@ -6,6 +6,8 @@ import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:ndere_tourism/fullmap.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -94,21 +96,6 @@ class _HomeScreenState extends State<HomeScreen> {
   TextEditingController searchController = TextEditingController();
   Position? userPosition;
 
-  @override
-  void initState() {
-    super.initState();
-    _loadMarkers();
-  }
-
-  void _loadMarkers() {
-    markers = touristSites.map((site) {
-      return Marker(
-        point: LatLng(site['latitude'], site['longitude']),
-        child: const Icon(Icons.location_on, color: Colors.red, size: 40),
-      );
-    }).toList();
-    setState(() {});
-  }
 
   void _getCurrentLocation() async {
     bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
@@ -131,6 +118,23 @@ class _HomeScreenState extends State<HomeScreen> {
       );
     });
   }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadMarkers();
+  }
+
+  void _loadMarkers() {
+    markers = touristSites.map((site) {
+      return Marker(
+        point: LatLng(site['latitude'], site['longitude']),
+        child: const Icon(Icons.location_on, color: Colors.red, size: 40),
+      );
+    }).toList();
+    setState(() {});
+  }
+
 
   Future<void> _getRouteToSite(double destLat, double destLng) async {
     if (userPosition == null) {
@@ -161,8 +165,32 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: const Text('Ndéré TOURISM'), backgroundColor: Colors.blue),
+      appBar: AppBar(shadowColor: Colors.black54,
+        elevation: 10.0,
+        centerTitle: true,
+        leading: Padding(
+          padding: const EdgeInsets.fromLTRB(10.0, 0, 0, 5),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: Image.asset(
+              "assets/montndere.jpg",
+              width: 100,
+              height: 100,
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        title: const Text(
+          "Homepage",
+          style: TextStyle(
+            color: Colors.white,
+            fontStyle: FontStyle.italic,
+            fontSize: 45,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        backgroundColor: Colors.blue,
+      ),
       body: Column(
         children: [
           Padding(
@@ -206,17 +234,20 @@ class _HomeScreenState extends State<HomeScreen> {
               itemBuilder: (context, index) {
                 var site = touristSites[index];
                 return ListTile(
-                  leading: CircleAvatar(
+                  leading: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
                     child: Image.asset(
                       site['urlImage'].toString(),
+                      width: 100,
+                      height: 200,
+                      fit: BoxFit.cover,
                     ),
                   ),
                   title: Text(site['sitename']),
                   subtitle: Text(site['description']),
                   trailing: const Icon(Icons.directions),
-                  onTap: () {
-                    _getRouteToSite(site['latitude'], site['longitude']);
-                  },
+                  onTap: () =>  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => FullMapScreen())),
                 );
               },
             ),

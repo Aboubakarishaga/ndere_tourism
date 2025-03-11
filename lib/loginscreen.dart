@@ -7,7 +7,10 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Connexion"), backgroundColor: Colors.blue),
+      appBar: AppBar(
+        title: const Text("Connexion"),
+        backgroundColor: Colors.blue,
+      ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(
@@ -50,18 +53,21 @@ class LoginScreen extends StatelessWidget {
                   },
                   child: const Text(
                     "Mot de passe oublié ?         ",
-                    style: TextStyle(color: Colors.blue, decoration: TextDecoration.underline),
+                    style: TextStyle(
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline),
                   ),
                 ),
                 const SizedBox(height: 10),
                 GestureDetector(
                   onTap: () {
-                    Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => const RegisterScreen()));
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => const RegisterScreen()));
                   },
                   child: const Text(
                     " Créer un compte",
-                    style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        color: Colors.blue, fontWeight: FontWeight.bold),
                   ),
                 ),
               ],

@@ -16,7 +16,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
@@ -24,7 +23,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -51,11 +49,17 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset('assets/splash_screen.png', width: 150), // Image du logo
+            Image.asset(
+              'assets/splash_screen.png',
+              width: 150,
+            ), // Image du logo
             const SizedBox(height: 20),
             const Text(
               "Bienvenue sur Ndéré TOURISM",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.blue),
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue),
             ),
             const SizedBox(height: 10),
             const Text(

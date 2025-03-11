@@ -185,7 +185,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 TileLayer(
                   urlTemplate:
                       "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                  subdomains: ['a', 'b', 'c'],
+                  subdomains: const ['a', 'b', 'c'],
                 ),
                 MarkerLayer(markers: markers),
                 PolylineLayer(
@@ -225,8 +225,8 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _getCurrentLocation,
-        child: const Icon(Icons.my_location),
         backgroundColor: Colors.blue,
+        child: const Icon(Icons.my_location),
       ),
     );
   }

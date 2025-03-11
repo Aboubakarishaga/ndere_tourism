@@ -12,7 +12,7 @@ class LoginScreen extends StatelessWidget {
         backgroundColor: Colors.blue,
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -38,9 +38,9 @@ class LoginScreen extends StatelessWidget {
                 // Action de connexion
               },
               style: ElevatedButton.styleFrom(
-                minimumSize: Size(double.infinity, 50),
+                minimumSize: const Size(double.infinity, 50),
               ),
-              child: Text("Se connecter"),
+              child: const Text("Se connecter"),
             ),
             const SizedBox(height: 15),
             Row(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:ndere_tourism/Homepage.dart';
+import 'package:ndere_tourism/homepage.dart';
 
 import 'loginscreen.dart';
 
@@ -16,7 +16,7 @@ class Navigation extends StatefulWidget {
 class _NavigationState extends State<Navigation> {
   int _selectedIndex = 0;
   final List<Widget> _pages = [
-    HomeScreen(),
+    const HomeScreen(),
     Container(), // Placeholder pour le FloatingActionButton
     const LoginScreen(),
   ];
@@ -49,7 +49,7 @@ class _NavigationState extends State<Navigation> {
       markers.add(
         Marker(
           point: LatLng(position.latitude, position.longitude),
-          child: Icon(Icons.my_location, color: Colors.blue, size: 40),
+          child: const Icon(Icons.my_location, color: Colors.blue, size: 40),
         ),
       );
     });
@@ -66,7 +66,7 @@ class _NavigationState extends State<Navigation> {
           const BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(
               icon: GestureDetector(
-                onTap: (){
+                onTap: () {
                   _getCurrentLocation;
                 },
                 child: const Icon(Icons.add, size: 40),

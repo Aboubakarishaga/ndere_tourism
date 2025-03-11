@@ -9,10 +9,11 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
-  TextEditingController _confirmPasswordController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
   DateTime? _selectedDate;
 
   void _pickDate() async {
@@ -33,7 +34,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Center(child: Text("Inscription")), backgroundColor: Colors.blue),
+      appBar: AppBar(
+          title: const Center(child: Text("Inscription")),
+          backgroundColor: Colors.blue),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -94,20 +97,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
               onPressed: () {
                 // Action pour l'inscription
               },
-              child: const Text("S'inscrire"),
               style: ElevatedButton.styleFrom(
                 minimumSize: const Size(double.infinity, 50),
               ),
+              child: const Text("S'inscrire"),
             ),
             const SizedBox(height: 10),
             GestureDetector(
               onTap: () {
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => const LoginScreen()));
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => const LoginScreen()));
               },
               child: const Text(
                 " Déjà Inscrit ? Se connecter",
-                style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+                style:
+                    TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
               ),
             ),
           ],
